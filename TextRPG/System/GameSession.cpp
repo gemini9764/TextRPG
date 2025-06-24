@@ -2,18 +2,21 @@
 #include <iostream>
 #include <limits>
 
-GameSession::GameSession(const std::string& name) : playerName(name), gold(100)
+GameSession::GameSession()
 {
     initializeGame();
 }
 
 void GameSession::initializeGame()
 {
-    player = std::make_unique<Character>(playerName, 1, 200, 30, 0);
+    std::string name;
+    std::cout << "    용사님의 이름을 입력해주세요 : " ;
+    std::cin >> name;
+    player = std::make_unique<Character>(name, 1, 200, 30, 0);
     shop.restock();
     gold = 100;
 
-    std::cout << "환영합니다 " << playerName << "님!" << std::endl;
+    std::cout << "환영합니다 " << player->getName() << "님!" << std::endl;
 }
 
 void GameSession::gameOver()

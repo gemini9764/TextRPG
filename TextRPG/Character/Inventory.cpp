@@ -1,4 +1,4 @@
-﻿#include "Inventory.h"
+﻿#include "../Character/Inventory.h"
 
 void Inventory::addItem(std::unique_ptr<Item> newItem)
 {

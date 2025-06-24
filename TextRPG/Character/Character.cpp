@@ -1,4 +1,4 @@
-﻿#include "Character.h"
+﻿#include "../Character/Character.h"
 
 Character::Character(const std::string& name, int level, int hp, int atk, int experience) : name(name), stats(level, hp, atk, experience) {}
 

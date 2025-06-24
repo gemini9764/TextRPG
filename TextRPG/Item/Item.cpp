@@ -1,7 +1,6 @@
 ﻿#include "Item.h"
 #include <iostream>
-
-#include "Character.h"
+#include "../Character/Character.h"
 
 Item::Item(const std::string& name, int price, int quantity, std::unique_ptr<Effect> eff) : name(name), price(price), quantity(quantity), effect(std::move(eff)) {}
 

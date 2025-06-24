@@ -1,6 +1,6 @@
 ﻿#include "Shop.h"
-#include "ItemFactory.h"
-#include "Item.h"
+#include "../Item/ItemFactory.h"
+#include "../Item/Item.h"
 #include <iostream>
 
 void Shop::initialize()

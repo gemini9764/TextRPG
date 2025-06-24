@@ -154,26 +154,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="CombatStats.cpp" />
-    <ClCompile Include="Effect.cpp" />
-    <ClCompile Include="GameSession.cpp" />
-    <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ItemFactory.cpp" />
-    <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="./Character/Character.cpp" />
+    <ClCompile Include="./Character/CombatStats.cpp" />
+    <ClCompile Include="./Item/Effect.cpp" />
+    <ClCompile Include="./System/GameSession.cpp" />
+    <ClCompile Include="./Character/Inventory.cpp" />
+    <ClCompile Include="./Item/Item.cpp" />
+    <ClCompile Include="./Item/ItemFactory.cpp" />
+    <ClCompile Include="./Shop/Shop.cpp" />
+    <ClCompile Include="System\GameManager.cpp" />
+    <ClCompile Include="System\UIManager.cpp" />
     <ClCompile Include="TextRPG.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h" />
-    <ClInclude Include="CombatStats.h" />
-    <ClInclude Include="Effect.h" />
-    <ClInclude Include="GameSession.h" />
-    <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="ItemFactory.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="Shop.h" />
+    <ClInclude Include="./Character/Character.h" />
+    <ClInclude Include="./Character/CombatStats.h" />
+    <ClInclude Include="./Item/Effect.h" />
+    <ClInclude Include="./System/GameSession.h" />
+    <ClInclude Include="./Character/Inventory.h" />
+    <ClInclude Include="./Item/Item.h" />
+    <ClInclude Include="./Item/ItemFactory.h" />
+    <ClInclude Include="./Monster/Monster.h" />
+    <ClInclude Include="./Shop/Shop.h" />
+    <ClInclude Include="System\GameManager.h" />
+    <ClInclude Include="System\UIManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

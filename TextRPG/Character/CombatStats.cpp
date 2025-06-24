@@ -1,4 +1,4 @@
-﻿#include "CombatStats.h"
+﻿#include "../Character/CombatStats.h"
 #include <iostream>
 
 CombatStats::CombatStats(int level, int hp, int atk, int experience) : level(level), hp(hp), maxhp(hp), attack(atk), experience(experience)

@@ -1,5 +1,5 @@
 ﻿#include "Effect.h"
-#include "Character.h"
+#include "../Character/Character.h"
 #include <iostream>
 
 HealEffect::HealEffect(int amt) : amount(amt) {}
