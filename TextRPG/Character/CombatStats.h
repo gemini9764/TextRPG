@@ -17,6 +17,7 @@ public:
 
     int getHp() const { return hp; }
     int getAttack() const { return attack; }
+    int getLevel() const { return level; }
     bool isDead() const { return hp <= 0; }
     void showStats() const;
 };
