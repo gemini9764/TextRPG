@@ -15,5 +15,5 @@ public:
     Item* getItem(int index) const;
     void removeItem(int index);
     bool empty() const { return inven.empty(); }
-    int size() const { return inven.size(); }
+    size_t size() const { return inven.size(); }
 };

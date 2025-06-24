@@ -3,6 +3,8 @@
 #include <iostream>
 #include <limits>
 
+#include "Logger.h"
+
 GameSession::GameSession()
 {
     initializeGame();
@@ -139,6 +141,7 @@ void GameSession::run()
                     if (player->getStats().getLevel() >= 10)
                     {
                         std::cout << "축하합니다! 게임을 클리어하셨습니다!" << std::endl;
+                        Logger::getInstance().log("Game Exit");
                         exit(0);
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿#include "../Character/CombatStats.h"
+#include "../System/Logger.h"
 #include <algorithm>
 #include <iostream>
 
@@ -52,6 +53,7 @@ void CombatStats::levelUp()
     }
     std::cout << "최대 체력과 공격력이 상승했습니다!" << level << std::endl;
     std::cout << "체력이 모두 회복되었습니다!" << std::endl;
-
+    Logger::getInstance().log("Level Up");
+    
     showStats();
 }

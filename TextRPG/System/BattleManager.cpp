@@ -1,5 +1,6 @@
 ﻿#include "BattleManager.h"
 #include "../System/Util.h"
+#include "../System/Logger.h"
 #include <iostream>
 #include <limits>
 
@@ -9,6 +10,7 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 {
     std::unique_ptr<Monster> monster = MonsterFactory::CreateMonster(player.getStats().getLevel());
     std::cout << "전투를 시작합니다! 몬스터 : " << monster->getName() << std::endl;
+    Logger::getInstance().log("Battle started with " + monster->getName());
 
     while (!player.getStats().isDead() && !monster->isDead())
     {
@@ -87,8 +89,11 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
         if (result.itemLooted != nullptr)
         {
             std::cout << result.itemLooted->getName() << "을(를) 발견했습니다!" << std::endl;
+            Logger::getInstance().log("Get the Item(" + result.itemLooted->getName() + ")");
         }
         std::cout << "획득한 경험치 : " << result.expGained << " / 획득한 골드 : " << result.goldGained << std::endl;
+        Logger::getInstance().log("Get the exp(" + std::to_string(result.expGained) + ")");
+        Logger::getInstance().log("Get the gold(" + std::to_string(result.goldGained) + ")");
     }
 
     return result;
