@@ -1,7 +1,7 @@
-﻿#include "Utility.h"
+﻿#include "Util.h"
 #include <random>
 
-int Utility::getRandomInRange(int min, int max)
+int Util::getRandomInRange(int min, int max)
 {
     static std::random_device rd;
     static std::mt19937 gen(rd());

@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Monster.h"
-#include "../System/Utility.h"
 
 class Goblin : public Monster
 {
@@ -12,8 +11,8 @@ private:
 public:
     Goblin(int level, bool isBoss = false)
     {
-        hp = Utility::getRandomInRange(22, 24) * level;
-        atk = Utility::getRandomInRange(6, 7) * level;
+        hp = Util::getRandomInRange(22, 24) * level;
+        atk = Util::getRandomInRange(6, 7) * level;
         name = "Goblin";
         if (isBoss)
         {

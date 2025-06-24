@@ -163,10 +163,11 @@
     <ClCompile Include="./Item/ItemFactory.cpp" />
     <ClCompile Include="./Shop/Shop.cpp" />
     <ClCompile Include="Monster\MonsterFactory.cpp" />
+    <ClCompile Include="Monster\MonsterItemFactory.cpp" />
     <ClCompile Include="System\BattleManager.cpp" />
     <ClCompile Include="System\GameManager.cpp" />
     <ClCompile Include="System\UIManager.cpp" />
-    <ClCompile Include="System\Utility.cpp" />
+    <ClCompile Include="System\Util.cpp" />
     <ClCompile Include="TextRPG.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,13 +183,14 @@
     <ClInclude Include="Monster\Dragon.h" />
     <ClInclude Include="Monster\Goblin.h" />
     <ClInclude Include="Monster\MonsterFactory.h" />
+    <ClInclude Include="Monster\MonsterItemFactory.h" />
     <ClInclude Include="Monster\Orc.h" />
     <ClInclude Include="Monster\Slime.h" />
     <ClInclude Include="Monster\Troll.h" />
     <ClInclude Include="System\BattleManager.h" />
     <ClInclude Include="System\GameManager.h" />
     <ClInclude Include="System\UIManager.h" />
-    <ClInclude Include="System\Utility.h" />
+    <ClInclude Include="System\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

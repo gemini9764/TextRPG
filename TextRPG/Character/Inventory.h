@@ -14,4 +14,6 @@ public:
     void showItems() const;
     Item* getItem(int index) const;
     void removeItem(int index);
+    bool empty() const { return inven.empty(); }
+    int size() const { return inven.size(); }
 };

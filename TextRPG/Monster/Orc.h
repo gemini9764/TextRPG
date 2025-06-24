@@ -11,8 +11,8 @@ private:
 public:
     Orc(int level, bool isBoss = false)
     {
-        hp = Utility::getRandomInRange(24, 26) * level;
-        atk = Utility::getRandomInRange(7, 8) * level;
+        hp = Util::getRandomInRange(24, 26) * level;
+        atk = Util::getRandomInRange(7, 8) * level;
         name = "Orc";
         if (isBoss)
         {

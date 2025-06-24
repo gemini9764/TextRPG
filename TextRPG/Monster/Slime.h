@@ -11,8 +11,8 @@ private:
 public:
     Slime(int level, bool isBoss = false)
     {
-        hp = Utility::getRandomInRange(20, 22) * level;
-        atk = Utility::getRandomInRange(5, 6) * level;
+        hp = Util::getRandomInRange(20, 22) * level;
+        atk = Util::getRandomInRange(5, 6) * level;
         name = "Slime";
         if (isBoss)
         {

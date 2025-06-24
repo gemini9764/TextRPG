@@ -14,10 +14,17 @@ public:
 
     void takeDamage(int amount);
     void heal(int amount);
+    void levelUp();
 
     int getHp() const { return hp; }
     int getAttack() const { return attack; }
     int getLevel() const { return level; }
     bool isDead() const { return hp <= 0; }
     void showStats() const;
+    void gainExp(int expUp)
+    {
+        this->experience += expUp;
+        if (this->experience >= 100)
+            this->levelUp();
+    }
 };

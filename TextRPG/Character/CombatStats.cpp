@@ -31,3 +31,27 @@ void CombatStats::showStats() const
     std::cout << "경험치    : " << experience << std::endl;
     std::cout << "----------------------------" << std::endl;
 }
+
+void CombatStats::levelUp()
+{
+    if (level >= 10)
+        return;
+
+    while (experience >= 100)
+    {
+        if (level >= 10)
+            break;
+
+        level++;
+        experience -= 100;
+        maxhp += level * 20;
+        attack += level * 5;
+        hp = maxhp;
+
+        std::cout << "레벨업!!" << std::endl;
+    }
+    std::cout << "최대 체력과 공격력이 상승했습니다!" << level << std::endl;
+    std::cout << "체력이 모두 회복되었습니다!" << std::endl;
+
+    showStats();
+}

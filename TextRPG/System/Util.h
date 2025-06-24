@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class Utility
+class Util
 {
 public:
     static int getRandomInRange(int min, int max);

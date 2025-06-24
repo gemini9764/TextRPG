@@ -11,8 +11,8 @@ private:
 public:
     Dragon(int level, bool isBoss = false)
     {
-        hp = Utility::getRandomInRange(28, 30) * level;
-        atk = Utility::getRandomInRange(9, 10) * level;
+        hp = Util::getRandomInRange(28, 30) * level;
+        atk = Util::getRandomInRange(9, 10) * level;
         name = "Dragon";
         if (isBoss)
         {

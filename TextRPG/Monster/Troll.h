@@ -11,8 +11,8 @@ private:
 public:
     Troll(int level, bool isBoss = false)
     {
-        hp = Utility::getRandomInRange(26, 28) * level;
-        atk = Utility::getRandomInRange(8, 9) * level;
+        hp = Util::getRandomInRange(26, 28) * level;
+        atk = Util::getRandomInRange(8, 9) * level;
         name = "Troll";
         if (isBoss)
         {
