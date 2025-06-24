@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <conio.h>
 
+#include "GameSession.h"
+
 
 #define UP 0
 #define DOWN 1
@@ -44,9 +46,8 @@ void gameStart() {
 	while (1) {
 		cout << "    용사님의 이름을 입력해주세요 : " ;
 		cin >> name;
-		cout << "환영합니다 " << name << "님!";
-		
-		// 밑에 코드 작성
+		GameSession game(name);
+		game.run();
 	}
 	
 }
