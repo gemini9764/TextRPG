@@ -2,8 +2,6 @@
 #include "../Character/Character.h"
 #include <iostream>
 
-HealEffect::HealEffect(int amt) : amount(amt) {}
-
 void HealEffect::apply(Character& target) {
     target.getStats().heal(amount);
 }

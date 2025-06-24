@@ -15,8 +15,8 @@ public:
     void takeDamage(int amount);
     void heal(int amount);
 
-    int getHp() const;
-    int getAttack() const;
-    bool isDead() const;
+    int getHp() const { return hp; }
+    int getAttack() const { return attack; }
+    bool isDead() const { return hp <= 0; }
     void showStats() const;
 };

@@ -1,8 +1,5 @@
 ﻿#include "Item.h"
 #include <iostream>
-#include "../Character/Character.h"
-
-Item::Item(const std::string& name, int price, int quantity, std::unique_ptr<Effect> eff) : name(name), price(price), quantity(quantity), effect(std::move(eff)) {}
 
 void Item::use(Character& target)
 {
@@ -27,16 +24,7 @@ void Item::use(Character& target)
         effect->apply(target);
         quantity -= 1;
     }
-    else
-        return;
 }
-
-const std::string& Item::getName() const { return name; }
-int Item::getPrice() const { return price; }
-int Item::getQuantity() const { return quantity; }
-void Item::decreaseQuantity() { if (quantity > 0) --quantity; }
-void Item::increaseQuantity() { if (quantity > 0) ++quantity; }
-bool Item::isSoldOut() const { return quantity <= 0; }
 
 std::unique_ptr<Item> Item::clone() const
 {

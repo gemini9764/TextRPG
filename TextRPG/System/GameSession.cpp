@@ -10,7 +10,7 @@ GameSession::GameSession()
 void GameSession::initializeGame()
 {
     std::string name;
-    std::cout << "    용사님의 이름을 입력해주세요 : " ;
+    std::cout << "    용사님의 이름을 입력해주세요 : ";
     std::cin >> name;
     player = std::make_unique<Character>(name, 1, 200, 30, 0);
     shop.restock();
@@ -54,7 +54,7 @@ void GameSession::visitShop()
             if (buyChoice == 0)
                 continue;
 
-            if (shop.purchasItem(buyChoice, gold))
+            if (shop.purchaseItem(buyChoice, gold))
             {
                 Item* item = shop.getItem(buyChoice - 1);
                 if (item != nullptr)
@@ -84,9 +84,9 @@ void GameSession::visitShop()
                 int sellPrice = item->getPrice() * 0.6;
                 gold += sellPrice;
                 shop.addItem(item->clone());
-                
+
                 std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << std::endl;
-                
+
                 item->decreaseQuantity();
                 if (item->getQuantity() < 0)
                 {
@@ -99,8 +99,10 @@ void GameSession::visitShop()
     }
 }
 
-void GameSession::run() {
-    while (true) {
+void GameSession::run()
+{
+    while (true)
+    {
         std::cout << "1. 상점" << std::endl;
         std::cout << "2. 상태창" << std::endl;
         std::cout << "3. 전투" << std::endl;
@@ -109,22 +111,30 @@ void GameSession::run() {
         int input;
         std::cin >> input;
 
-        switch (input) {
+        switch (input)
+        {
         case 1:
+            // 1. 상점
             visitShop();
             break;
         case 2:
+            // 2. 상태창
             player->getStats().showStats();
             break;
         case 3:
+            // 3. 전투
             player->getStats().takeDamage(20);
-            if (player->getStats().isDead()) {
+            if (player->getStats().isDead())
+            {
                 gameOver();
-            } else {
+            }
+            else
+            {
                 std::cout << "You survived the combat.\n";
             }
             break;
         case 4:
+            // 4. 게임 종료
             std::cout << "게임을 종료합니다." << std::endl;
             exit(0);
         default:

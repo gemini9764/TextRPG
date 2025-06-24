@@ -44,7 +44,7 @@ Item* Shop::getItem(int index) const
     return items[index - 1].get();
 }
 
-bool Shop::purchasItem(int index, int& playerMoney)
+bool Shop::purchaseItem(int index, int& playerMoney)
 {
     if (index < 1 || index > items.size())
         return false;

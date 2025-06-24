@@ -8,5 +8,5 @@ private:
     
 public:
     void run();
-    void gamestart();
+    void gameStart();
 };

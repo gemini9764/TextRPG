@@ -12,9 +12,11 @@ void GameManager::run()
         switch (menuCode)
         {
         case 0:
-            gamestart();
+            // GameSession::run()
+            gameStart();
             break;
         case 1:
+            // 조 정보
             ui.infoDraw();
             break;
         case 2:
@@ -24,7 +26,7 @@ void GameManager::run()
     }
 }
 
-void GameManager::gamestart()
+void GameManager::gameStart()
 {
     system("cls");
     GameSession game;

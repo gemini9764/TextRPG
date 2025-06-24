@@ -43,8 +43,10 @@ void UIManager::infoDraw()
     std::cout << "       내일배움캠프 TextRPG 과제 \n";
     std::cout << "스페이스 바를 누르면 메인화면으로 이동합니다.";
 
-    while (1) {
-        if (keyControl() == SUBMIT) {
+    while (1)
+    {
+        if (keyControl() == SUBMIT)
+        {
             break;
         }
     }
@@ -54,38 +56,46 @@ int UIManager::menuDraw()
 {
     int x = 50;
     int y = 15;
-    gotoXY(x-2, y);
+    gotoXY(x - 2, y);
     std::cout << "> GAME START";
-    gotoXY(x, y+1);
+    gotoXY(x, y + 1);
     std::cout << "GAME INFO";
-    gotoXY(x, y+2);
+    gotoXY(x, y + 2);
     std::cout << "  QUIT";
-	
-    while (1) {
+
+    while (1)
+    {
         int n = keyControl();
-        switch(n){
-        case UP: {
-                if (y>15) { // y는 15~17까지만 이동 
-                    gotoXY(x-2,y);
+        switch (n)
+        {
+        case UP:
+            {
+                if (y > 15)
+                {
+                    // y는 15~17까지만 이동 
+                    gotoXY(x - 2, y);
                     std::cout << " ";
-                    gotoXY(x-2, --y);
-                    std::cout << ">";
-                } 
-                break;
-        }
-        case DOWN: {
-                if(y<17){
-                    gotoXY(x-2,y);
-                    std::cout << " ";
-                    gotoXY(x-2,++y);
+                    gotoXY(x - 2, --y);
                     std::cout << ">";
                 }
                 break;
-        }
-			
-        case SUBMIT: {
-                return y-15;
-        }
+            }
+        case DOWN:
+            {
+                if (y < 17)
+                {
+                    gotoXY(x - 2, y);
+                    std::cout << " ";
+                    gotoXY(x - 2, ++y);
+                    std::cout << ">";
+                }
+                break;
+            }
+
+        case SUBMIT:
+            {
+                return y - 15;
+            }
         }
     }
 }
@@ -93,16 +103,16 @@ int UIManager::menuDraw()
 int UIManager::keyControl()
 {
     char temp = _getch();
-	
-    if(temp == 'w' || temp =='W')
+
+    if (temp == 'w' || temp == 'W')
         return UP;
-    
+
     else if (temp == 's' || temp == 'S')
         return DOWN;
-    
+
     else if (temp == 32)
         return SUBMIT;
-    
+
     return -1;
 }
 
