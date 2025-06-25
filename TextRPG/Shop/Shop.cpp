@@ -55,7 +55,7 @@ bool Shop::purchaseItem(int index, int& playerMoney)
         std::cout << "품절되었습니다" << std::endl;
         return false;
     }
-    if (playerMoney < item->getQuantity())
+    if (playerMoney < item->getPrice())
     {
         std::cout << "골드가 모자랍니다" << std::endl;
         return false;
