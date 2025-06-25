@@ -164,6 +164,7 @@
     <ClCompile Include="./Shop/Shop.cpp" />
     <ClCompile Include="Monster\MonsterFactory.cpp" />
     <ClCompile Include="Monster\MonsterItemFactory.cpp" />
+    <ClCompile Include="Monster\Monster.cpp" />
     <ClCompile Include="System\BattleManager.cpp" />
     <ClCompile Include="System\GameManager.cpp" />
     <ClCompile Include="System\Logger.cpp" />

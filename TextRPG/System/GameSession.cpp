@@ -84,7 +84,7 @@ void GameSession::visitShop()
             Item* item = player->getInventory().getItem(sellChoice - 1);
             if (item != nullptr)
             {
-                int sellPrice = item->getPrice() * 0.6;
+                int sellPrice = static_cast<int>(item->getPrice() * 0.6);
                 gold += sellPrice;
                 shop.addItem(item->clone());
 

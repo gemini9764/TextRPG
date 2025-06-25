@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <algorithm>
 #include <string>
 #include <memory>
 #include "../System/Util.h"
@@ -11,16 +12,23 @@ class Monster
 protected:
     std::string name;
     int hp;
-    int attack;
+    int atk;
     std::unique_ptr<Item> loogItem;
     
-public:    
+public:
+    Monster(std::string name, int level, bool isBoss = false, float healthMultiply = 1.f, float attakMultiply = 1.f);
     virtual ~Monster() = default;
-    virtual std::string getName() const = 0;
-    virtual int getHp() const = 0;
-    virtual int getAttack() const = 0;
-    virtual void takeDamage(int amount) = 0;
-    virtual bool isDead() const = 0;
+
+    std::string getName() const { return name; }
+    int getHp() const { return hp; }
+    int getAttack() const { return atk; }
+    bool isDead() const { return hp <= 0; }
+    
+    virtual void takeDamage(int amount)
+    {
+        hp -= amount;
+        hp = std::max(hp, 0);
+    }
 
     void setLoot(std::unique_ptr<Item> item)
     {
