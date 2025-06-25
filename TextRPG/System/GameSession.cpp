@@ -17,18 +17,18 @@ void GameSession::initializeGame()
     player = std::make_unique<Character>(name, 1, 200, 30, 0, 0);
     shop.restock();
 
-    std::cout << "환영합니다 " << player->getName() << "님!" << std::endl;
+    std::cout << "환영합니다 " << player->getName() << "님!" << '\n';
 }
 
 void GameSession::gameOver()
 {
-    std::cout << "게임을 재시작합니다" << std::endl;
+    std::cout << "게임을 재시작합니다" << '\n';
     initializeGame();
 }
 
 void GameSession::gameClear()
 {
-    std::cout << "축하합니다! 게임을 클리어하셨습니다!" << std::endl;
+    std::cout << "축하합니다! 게임을 클리어하셨습니다!" << '\n';
     exit(0);
 }
 
@@ -37,8 +37,8 @@ void GameSession::visitShop()
     system("cls");
     while (true)
     {
-        std::cout << "----------- 상점 -------------" << std::endl;
-        std::cout << "보유 Gold: " << player->getStats().getGold() << std::endl;
+        std::cout << "----------- 상점 -------------" << '\n';
+        std::cout << "보유 Gold: " << player->getStats().getGold() << '\n';
         int action;
         std::cout << "1. 아이템 구매\n2. 아이템 판매\n0. 상점 나가기\n>";
         std::cin >> action;
@@ -63,12 +63,12 @@ void GameSession::visitShop()
                 if (item != nullptr)
                 {
                     player->getInventory().addItem(item->clone());
-                    std::cout << "구매가 완료되었습니다" << std::endl;
+                    std::cout << "구매가 완료되었습니다" << '\n';
                 }
             }
             else
             {
-                std::cout << "아이템 구매를 취소했습니다." << std::endl;
+                std::cout << "아이템 구매를 취소했습니다." << '\n';
             }
         }
         else if (action == 2)
@@ -88,7 +88,7 @@ void GameSession::visitShop()
                 player->getStats().setGold(player->getStats().getGold() + sellPrice);
                 shop.addItem(item->clone());
 
-                std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << std::endl;
+                std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << '\n';
 
                 item->decreaseQuantity();
                 if (item->getQuantity() <= 0)
@@ -98,7 +98,7 @@ void GameSession::visitShop()
             }
         }
         else
-            std::cout << "다시 선택해주세요" << std::endl;
+            std::cout << "다시 선택해주세요" << '\n';
     }
 }
 
@@ -108,10 +108,10 @@ void GameSession::run()
 
     while (true)
     {
-        std::cout << "1. 상점" << std::endl;
-        std::cout << "2. 상태창" << std::endl;
-        std::cout << "3. 전투" << std::endl;
-        std::cout << "4. 게임 종료" << std::endl;
+        std::cout << "1. 상점" << '\n';
+        std::cout << "2. 상태창" << '\n';
+        std::cout << "3. 전투" << '\n';
+        std::cout << "4. 게임 종료" << '\n';
 
         int input;
         std::cin >> input;
@@ -152,10 +152,10 @@ void GameSession::run()
             }
         case 4:
             // 4. 게임 종료
-            std::cout << "게임을 종료합니다." << std::endl;
+            std::cout << "게임을 종료합니다." << '\n';
             exit(0);
         default:
-            std::cout << "다시 선택해주세요" << std::endl;
+            std::cout << "다시 선택해주세요" << '\n';
             system("cls");
         }
     }

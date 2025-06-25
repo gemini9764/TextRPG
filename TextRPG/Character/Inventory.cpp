@@ -20,13 +20,13 @@ void Inventory::addItem(std::unique_ptr<Item> newItem)
 
 void Inventory::showItems() const
 {
-    std::cout << "--------- 인벤토리 ----------" << std::endl;
+    std::cout << "--------- 인벤토리 ----------" << '\n';
 
     if (!inven.empty())
     {
         for (int i = 0; i < inven.size(); i++)
         {
-            std::cout << i + 1 << ". " << inven[i]->getName() << " (수량: " << inven[i]->getQuantity() << ")" << std::endl;
+            std::cout << i + 1 << ". " << inven[i]->getName() << " (수량: " << inven[i]->getQuantity() << ")" << '\n';
         }
     }
     else

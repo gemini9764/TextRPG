@@ -8,10 +8,10 @@ class BattleManager
 public:
     struct BattleResult
     {
-        bool playerWon;
-        bool bossMonster;
-        int goldGained;
-        int expGained;
+        bool playerWon = false;
+        bool bossMonster = false;
+        int goldGained = 0;
+        int expGained = 0;
         std::unique_ptr<Item> itemLooted;
     };
     

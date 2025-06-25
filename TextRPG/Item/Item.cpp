@@ -7,7 +7,7 @@ void Item::use(Character& target)
 {
     if (quantity <= 0)
     {
-        std::cout << "아이템을 모두 사용하셨습니다" << std::endl;
+        std::cout << "아이템을 모두 사용하셨습니다" << '\n';
         return;
     }
 

@@ -1,110 +1,115 @@
-#include "CombatStats.h"
+﻿#include "CombatStats.h"
 #include "../System/Logger.h"
 #include "../System/Util.h"
 #include "../System/Logger.h"
 #include <algorithm>
 #include <iostream>
-#include "../System/Logger.h"
+#include <iomanip>
 
 CombatStats::CombatStats(int level, int hp, int atk, int experience, int gold)
-    : level(level), hp(hp), maxhp(hp),
-      attack(atk), experience(experience), gold(gold)
+	: level(level), hp(hp), maxhp(hp),
+	attack(atk), experience(experience), gold(gold)
 {
+	extraDamage = 0;
+	membraneTurn = false;
+	doubleTrun = false;
+	dodge = false;
 }
 
 void CombatStats::takeDamage(int amount)
 {
-    if (membraneTurn == true)
-    {
-        amount = 5;
-        membraneTurn = false;
-    }
-    else if (dodge == true)
-    {
-        std::cout << "ȸ�� �ֻ����� �����ϴ�. 3�� ������ ������ ȸ���մϴ�." << std::endl;
-        int missDice = Util::getRandomInRange(1, 6);
+	if (membraneTurn == true)
+	{
+		amount = 5;
+		membraneTurn = false;
+	}
+	else if (dodge == true)
+	{
+		std::cout << "회피 주사위를 굴립니다. 3이 나오면 공격을 회피합니다." << '\n';
+		int missDice = Util::getRandomInRange(1, 6);
 
-        if (missDice == 3)
-        {
-            std::cout << "�ֻ��� ���� 3�� ���Խ��ϴ�! ������ ȸ���մϴ�!" << std::endl;
-            return;
-        }
-    }
+		if (missDice == 3)
+		{
+			std::cout << "주사위 눈이 3이 나왔습니다! 공격을 회피합니다!" << '\n';
+			return;
+		}
+	}
 
-    hp -= amount;
-    hp = std::max(hp, 0);
+	hp -= amount;
+	hp = std::max(hp, 0);
 
-    std::cout << amount << "�� �������� �޾ҽ��ϴ�(���� ü�� : " << hp << " / " << maxhp << ")" << std::endl;
+	std::cout << amount << "의 데미지를 받았습니다(현재 체력 : " << hp << " / " << maxhp << ")" << '\n';
 }
 
 void CombatStats::heal(int amount)
 {
-    hp += amount;
-    hp = std::min(hp, maxhp);
+	hp += amount;
+	hp = std::min(hp, maxhp);
 
-    std::cout << "ü���� ȸ���߽��ϴ�(���� ü�� : " << hp << " / " << maxhp << ")" << std::endl;
+	std::cout << "체력을 회복했습니다(현재 체력 : " << hp << " / " << maxhp << ")" << '\n';
 }
 
 void CombatStats::atkBoost(int amount)
 {
-    attack += amount;
-    std::cout << "���ݷ��� " << amount << "��ŭ ����߽��ϴ�." << std::endl;
+	attack += amount;
+	std::cout << "공격력이 " << amount << "만큼 상승했습니다." << '\n';
 }
 
 void CombatStats::hpBoost(int amount)
 {
-    maxhp += amount;
-    std::cout << "�ִ� ü���� " << amount << "��ŭ ����߽��ϴ�." << std::endl;
+	maxhp += amount;
+	std::cout << "최대 체력이 " << amount << "만큼 상승했습니다." << '\n';
 }
 
 bool CombatStats::doubleAttack()
 {
-    if (doubleTrun == true)
-    {
-        doubleTrun = false;
-        return true;
-    }
+	if (doubleTrun == true)
+	{
+		doubleTrun = false;
+		return true;
+	}
 
-    return false;
+	return false;
 }
 
 void CombatStats::showStats() const
 {
-    std::cout << "---------- ����â -----------" << std::endl;
-    std::cout << "����      : " << level << std::endl;
-    std::cout << "���ݷ�    : " << attack << std::endl;
-    std::cout << "ü��      : " << hp << " / " << maxhp << std::endl;
-    std::cout << "����ġ    : " << experience << std::endl;
-    std::cout << "���      : " << gold << std::endl;
-    std::cout << "----------------------------" << std::endl;
+	std::cout << "---------- 상태창 -----------" << '\n';
+	std::cout << "레벨" << std::setw(10) << ": " << level << '\n';
+	std::cout << "공격력" << std::setw(8) << ": " << attack << '\n';
+	std::cout << "체력" << std::setw(10) << ": " << hp << '\n';
+	std::cout << "최대 체력" << std::setw(5) << ": " << maxhp << '\n';
+	std::cout << "경험치" << std::setw(8) << ": " << experience << '\n';
+	std::cout << "골드" << std::setw(10) << ": " << gold << '\n';
+	std::cout << "----------------------------" << '\n';
 }
 
 void CombatStats::setGold(int value)
 {
-    gold = value;
+	gold = value;
 }
 
 void CombatStats::levelUp()
 {
-    if (level >= 10)
-        return;
+	if (level >= 10)
+		return;
 
-    while (experience >= 100)
-    {
-        if (level >= 10)
-            break;
+	while (experience >= 100)
+	{
+		if (level >= 10)
+			break;
 
-        level++;
-        experience -= 100;
-        maxhp += level * 20;
-        attack += level * 5;
-        hp = maxhp;
+		level++;
+		experience -= 100;
+		maxhp += level * 20;
+		attack += level * 5;
+		hp = maxhp;
 
-        std::cout << "������!!" << std::endl;
-    }
-    std::cout << "최대 체력과 공격력이 상승했습니다!" << std::endl;
-    std::cout << "체력이 모두 회복되었습니다!" << std::endl;
-    Logger::getInstance().log("Level Up");
+		std::cout << "레벨업!!" << '\n';
+	}
+	std::cout << "최대 체력과 공격력이 상승했습니다!" << '\n';
+	std::cout << "체력이 모두 회복되었습니다!" << '\n';
+	Logger::getInstance().log("Level Up");
 
-    showStats();
+	showStats();
 }
