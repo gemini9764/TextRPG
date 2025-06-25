@@ -14,8 +14,10 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 
     while (!player.getStats().isDead() && !monster->isDead())
     {
-        std::cout << player.getName() << "의 HP : " << player.getStats().getHp() << std::endl;
-        std::cout << monster->getName() << "의 HP : " << monster->getHp() << std::endl;
+        std::cout << player.getName() << "의 HP : " << player.getStats().getHp()
+            << "Attack: " << player.getStats().getAttack() << std::endl;
+        std::cout << monster->getName() << "의 HP : " << monster->getHp()
+            << "Attack: " << monster->getAttack() << std::endl;
 
         std::cout << "1. 공격\n2. 아이템 사용\n>";
         int choice;
@@ -32,9 +34,9 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
         while (choice != 1 && choice != 2)
         {
             std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
-            std::cin >> choice; 
+            std::cin >> choice;
         }
-        
+
         if (choice == 1)
         {
             int playerDamage = player.getStats().getAttack();
@@ -42,7 +44,7 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
             {
                 playerDamage *= 2;
             }
-            
+
             monster->takeDamage(playerDamage);
             std::cout << monster->getName() << "에게 " << playerDamage << "의 데미지를 주었습니다" << std::endl;
         }
@@ -63,6 +65,8 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
             {
                 Item* item = player.getInventory().getItem(itemIndex - 1);
                 item->use(player);
+                player.getStats().showStats();
+
                 if (item->isSoldOut())
                 {
                     player.getInventory().removeItem(itemIndex - 1);
@@ -108,7 +112,7 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
         result.goldGained = Util::getRandomInRange(10, 20);
         result.expGained = 50;
         result.itemLooted = monster->dropLoot();
-        
+
         if (result.itemLooted != nullptr)
         {
             std::cout << result.itemLooted->getName() << "을(를) 발견했습니다!" << std::endl;
@@ -121,4 +125,3 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 
     return result;
 }
-

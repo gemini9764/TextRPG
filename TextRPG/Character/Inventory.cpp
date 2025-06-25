@@ -14,7 +14,7 @@ void Inventory::addItem(std::unique_ptr<Item> newItem)
             return;
         }
     }
-    
+
     inven.push_back(std::move(newItem));
 }
 
@@ -26,12 +26,12 @@ void Inventory::showItems() const
     {
         for (int i = 0; i < inven.size(); i++)
         {
-            std::cout << i + 1 << ". " << inven[i]->getName() << " (수량: " << inven[i]->getQuantity() << std::endl;
+            std::cout << i + 1 << ". " << inven[i]->getName() << " (수량: " << inven[i]->getQuantity() << ")" << std::endl;
         }
     }
     else
     {
-        std::cout<<"현재 인벤토리가 비어있습니다.\n";
+        std::cout << "현재 인벤토리가 비어있습니다.\n";
     }
 }
 

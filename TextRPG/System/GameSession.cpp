@@ -14,9 +14,8 @@ void GameSession::initializeGame()
     std::string name;
     std::cout << "    용사님의 이름을 입력해주세요 : ";
     std::cin >> name;
-    player = std::make_unique<Character>(name, 1, 200, 30, 0);
+    player = std::make_unique<Character>(name, 1, 200, 30, 0, 0);
     shop.restock();
-    gold = 10;
 
     std::cout << "환영합니다 " << player->getName() << "님!" << std::endl;
 }
@@ -39,6 +38,7 @@ void GameSession::visitShop()
     while (true)
     {
         std::cout << "----------- 상점 -------------" << std::endl;
+        std::cout << "보유 Gold: " << player->getStats().getGold() << std::endl;
         int action;
         std::cout << "1. 아이템 구매\n2. 아이템 판매\n0. 상점 나가기\n>";
         std::cin >> action;
@@ -56,7 +56,7 @@ void GameSession::visitShop()
             if (buyChoice == 0)
                 continue;
 
-            if (shop.purchaseItem(buyChoice, gold))
+            if (shop.purchaseItem(buyChoice, player->getStats()))
             {
                 Item* item = shop.getItem(buyChoice - 1);
                 
@@ -85,7 +85,7 @@ void GameSession::visitShop()
             if (item != nullptr)
             {
                 int sellPrice = static_cast<int>(item->getPrice() * 0.6);
-                gold += sellPrice;
+                player->getStats().setGold(player->getStats().getGold() + sellPrice);
                 shop.addItem(item->clone());
 
                 std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << std::endl;
@@ -105,7 +105,7 @@ void GameSession::visitShop()
 void GameSession::run()
 {
     BattleManager battleManager;
-    
+
     while (true)
     {
         std::cout << "1. 상점" << std::endl;
@@ -131,6 +131,7 @@ void GameSession::run()
                 BattleManager::BattleResult result = battleManager.startBattle(*player);
                 if (result.playerWon)
                 {
+                    player->getStats().setGold(player->getStats().getGold() + result.goldGained);
                     if (result.bossMonster)
                     {
                         Logger::getInstance().log("Game Exit");

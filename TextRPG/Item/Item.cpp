@@ -1,6 +1,8 @@
 ﻿#include "Item.h"
 #include <iostream>
 
+#include "../Character/Character.h"
+
 void Item::use(Character& target)
 {
     if (quantity <= 0)

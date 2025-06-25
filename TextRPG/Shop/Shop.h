@@ -3,6 +3,7 @@
 #include <vector>
 
 class Item;
+class CombatStats;
 
 class Shop
 {
@@ -22,19 +23,20 @@ public:
     void addItem(std::unique_ptr<Item> newItem);
     void showItem() const;
     Item* getItem(int index) const;
-    
+
+
     /**
-     * @brief 주어진 인덱스의 아이템을 구매합니다.
+     * @brief 상점에서 특정 아이템을 구매합니다.
      *
-     * 상점에서 선택된 아이템을 구매하려고 시도합니다.
-     * 구매하려는 아이템의 번호와 플레이어의 현재 소지 금액을 참조하여 구매 가능 여부를 판단하며, 구매 요청을 처리합니다.
-     * 아이템 구매 성공 시 플레이어의 소지 금액이 차감되고, 해당 아이템의 재고도 감소합니다.
+     * 주어진 인덱스의 아이템을 구매하려고 시도하며, 구매 조건(재고 유무, 금액 충족 여부 등)을 확인합니다.
+     * 조건이 충족되면 플레이어의 골드가 감소하고 아이템 재고가 줄어듭니다.
+     * 또한, 아이템 재고가 소진되었을 경우 상점 목록에서 해당 아이템이 제거됩니다.
      *
-     * @param index 구매하려는 아이템의 인덱스 (1부터 시작).
-     * @param playerMoney 플레이어의 현재 소지 금액 (참조로 전달됨).
-     * @return 구매 성공 시 true, 실패 시 false를 반환.
+     * @param index 구매를 시도할 아이템의 인덱스 (1부터 시작).
+     * @param playerStats 플레이어의 전투 스탯 정보를 담은 객체. 구매 시 골드 정보가 사용되며 업데이트됩니다.
+     * @return 구매 성공 여부를 나타내는 boolean 값. 성공 시 true, 실패 시 false.
      */
-    bool purchaseItem(int index, int& playerMoney);
+    bool purchaseItem(int index, CombatStats& playerStats);
     /**
      * @brief 상점의 아이템 재고를 초기화합니다.
      *
