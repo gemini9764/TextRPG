@@ -66,12 +66,12 @@ bool Shop::purchaseItem(int index, CombatStats& playerStats)
 
     char useYn;
     std::cout << "아이템을 구매하시겠습니까?(Y/N)\n>";
-    std::cin.get(useYn);
+    std::cin >> useYn;
 
     while (useYn != 'Y' && useYn != 'y' && useYn != 'N' && useYn != 'n')
     {
         std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
-        std::cin.get(useYn);
+        std::cin >> useYn;
     }
 
     if (useYn == 'Y' || useYn == 'y')
