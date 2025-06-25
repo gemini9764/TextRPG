@@ -137,7 +137,7 @@ void GameSession::run()
                         player->getInventory().addItem(result.itemLooted->clone());
                     }
 
-                    if (player->getStats().getLevel() >= 10)
+                    if (player->getStats().getLevel() > 10)
                     {
                         std::cout << "축하합니다! 게임을 클리어하셨습니다!" << std::endl;
                         Logger::getInstance().log("Game Exit");

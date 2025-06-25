@@ -5,7 +5,7 @@ class Goblin : public Monster
 {
 public:
     Goblin(int level, bool isBoss = false)
-        : Monster("Goblin", level)
+        : Monster("Goblin", level, isBoss)
     {
     }
 };

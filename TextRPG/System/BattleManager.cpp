@@ -21,7 +21,7 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
         int choice;
         std::cin >> choice;
         
-        while (choice != '1' && choice != '2')
+        while (choice != 1 && choice != 2)
         {
             std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
             std::cin >> choice; 
@@ -89,7 +89,7 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
         result.goldGained = Util::getRandomInRange(10, 20);
         result.expGained = 50;
         result.itemLooted = monster->dropLoot();
-
+        
         if (result.itemLooted != nullptr)
         {
             std::cout << result.itemLooted->getName() << "을(를) 발견했습니다!" << std::endl;

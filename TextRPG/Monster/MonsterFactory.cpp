@@ -1,4 +1,8 @@
 ﻿#include "MonsterFactory.h"
+
+#include <iostream>
+#include <ostream>
+
 #include "Goblin.h"
 #include "Orc.h"
 #include "Troll.h"
@@ -10,7 +14,7 @@
 std::unique_ptr<Monster> MonsterFactory::CreateMonster(int playerLevel)
 {
     std::unique_ptr<Monster> monster;
-    bool isBoss = (playerLevel >= 10);
+    bool isBoss = playerLevel >= 10 ? true : false;
     int type = Util::getRandomInRange(1, 5);
     switch (type)
     {
@@ -33,5 +37,6 @@ std::unique_ptr<Monster> MonsterFactory::CreateMonster(int playerLevel)
             monster = std::make_unique<Slime>(playerLevel, isBoss);
     }
     
+    monster->setLoot();
     return monster;
 }

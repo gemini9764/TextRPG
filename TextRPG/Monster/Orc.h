@@ -5,7 +5,7 @@ class Orc : public Monster
 {
 public:
     Orc(int level, bool isBoss = false)
-        : Monster("Orc", level)
+        : Monster("Orc", level, isBoss)
     {
     }
 };
