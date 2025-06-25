@@ -131,14 +131,13 @@ void GameSession::run()
                 BattleManager::BattleResult result = battleManager.startBattle(*player);
                 if (result.playerWon)
                 {
-                    player->getStats().setGold(player->getStats().getGold() + result.goldGained);
                     if (result.bossMonster)
                     {
                         Logger::getInstance().log("Game Exit");
                         gameClear();
                     }
-                    
-                    gold += result.goldGained;
+
+                    player->getStats().setGold(player->getStats().getGold() + result.goldGained);
                     player->getStats().gainExp(result.expGained);
                     if (result.itemLooted != nullptr)
                     {
