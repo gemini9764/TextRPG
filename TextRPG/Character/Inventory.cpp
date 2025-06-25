@@ -29,9 +29,9 @@ void Inventory::showItems() const
 
 Item* Inventory::getItem(int index) const
 {
-    if (index < 1 || index > inven.size())
+    if (index < 0 || index > inven.size())
         return nullptr;
-    return inven[index - 1].get();
+    return inven[index].get();
 }
 
 void Inventory::removeItem(int index)

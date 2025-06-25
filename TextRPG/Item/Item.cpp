@@ -11,12 +11,12 @@ void Item::use(Character& target)
 
     char useYn;
     std::cout << "아이템을 사용하시겠습니까?(Y/N)\n>";
-    std::cin.get(useYn);
+    std::cin >> useYn;
     
     while (useYn != 'Y' && useYn != 'y' && useYn != 'N' && useYn != 'n')
     {
         std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
-        std::cin.get(useYn);     
+        std::cin >> useYn;     
     }
 
     if (useYn == 'Y' || useYn == 'y')
@@ -28,5 +28,5 @@ void Item::use(Character& target)
 
 std::unique_ptr<Item> Item::clone() const
 {
-    return std::make_unique<Item>(name, price, quantity, effect->clone());
+    return std::make_unique<Item>(name, price, 1, effect->clone());
 }

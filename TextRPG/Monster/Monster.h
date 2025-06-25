@@ -17,6 +17,7 @@ protected:
     int hp;
     int atk;
     std::unique_ptr<Item> loogItem;
+    bool bossMonster;
     
 public:
     Monster(std::string name, int level, bool isBoss = false);
@@ -25,6 +26,7 @@ public:
     std::string getName() const { return monsterName; }
     int getHp() const { return hp; }
     int getAttack() const { return atk; }
+    bool isBoss() const { return bossMonster; }
     bool isDead() const { return hp <= 0; }
     
     virtual void takeDamage(int amount)

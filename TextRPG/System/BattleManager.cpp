@@ -20,6 +20,14 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
         std::cout << "1. 공격\n2. 아이템 사용\n>";
         int choice;
         std::cin >> choice;
+
+        // 테스트용 즉시 사망
+        if (choice == 9)
+        {
+            int maxHP = player.getStats().getHp();
+            player.getStats().takeDamage(maxHP);
+            break;
+        }
         
         while (choice != 1 && choice != 2)
         {
@@ -74,6 +82,7 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
     }
 
     BattleResult result;
+    result.bossMonster = monster->isBoss();
     if (player.getStats().isDead())
     {
         std::cout << "YOU DIED" << std::endl;
@@ -86,6 +95,16 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
     {
         std::cout << "YOU WIN!!" << std::endl;
         result.playerWon = true;
+
+        if (result.bossMonster == true)
+        {
+            result.goldGained = 0;
+            result.expGained = 0;
+            result.itemLooted = nullptr;
+
+            return result;
+        }
+        
         result.goldGained = Util::getRandomInRange(10, 20);
         result.expGained = 50;
         result.itemLooted = monster->dropLoot();

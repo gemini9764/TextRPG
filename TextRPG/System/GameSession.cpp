@@ -23,7 +23,7 @@ void GameSession::initializeGame()
 
 void GameSession::gameOver()
 {
-    std::cout << "You died" << std::endl;
+    std::cout << "게임을 재시작합니다" << std::endl;
     initializeGame();
 }
 
@@ -59,6 +59,7 @@ void GameSession::visitShop()
             if (shop.purchaseItem(buyChoice, gold))
             {
                 Item* item = shop.getItem(buyChoice - 1);
+                
                 if (item != nullptr)
                 {
                     player->getInventory().addItem(item->clone());
@@ -67,7 +68,7 @@ void GameSession::visitShop()
             }
             else
             {
-                std::cout << "아이템 구매에 실패하였습니다." << std::endl;
+                std::cout << "아이템 구매를 취소했습니다." << std::endl;
             }
         }
         else if (action == 2)
@@ -90,7 +91,7 @@ void GameSession::visitShop()
                 std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << std::endl;
 
                 item->decreaseQuantity();
-                if (item->getQuantity() < 0)
+                if (item->getQuantity() <= 0)
                 {
                     player->getInventory().removeItem(sellChoice);
                 }
@@ -130,19 +131,22 @@ void GameSession::run()
                 BattleManager::BattleResult result = battleManager.startBattle(*player);
                 if (result.playerWon)
                 {
-                    gold += result.expGained;
+                    if (result.bossMonster)
+                    {
+                        Logger::getInstance().log("Game Exit");
+                        gameClear();
+                    }
+                    
+                    gold += result.goldGained;
                     player->getStats().gainExp(result.expGained);
                     if (result.itemLooted != nullptr)
                     {
                         player->getInventory().addItem(result.itemLooted->clone());
                     }
-
-                    if (player->getStats().getLevel() > 10)
-                    {
-                        std::cout << "축하합니다! 게임을 클리어하셨습니다!" << std::endl;
-                        Logger::getInstance().log("Game Exit");
-                        exit(0);
-                    }
+                }
+                else
+                {
+                    gameOver();
                 }
                 break;
             }

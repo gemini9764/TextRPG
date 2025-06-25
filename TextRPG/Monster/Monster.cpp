@@ -3,7 +3,7 @@
 #include <iostream>
 
 Monster::Monster(std::string name, int level, bool isBoss)
-    : monsterName(name),
+    : monsterName(name), bossMonster(isBoss),
       hp(Util::getRandomInRange(static_cast<int>(level * 20),
                                 static_cast<int>(level * 30))),
       atk(Util::getRandomInRange(static_cast<int>(level * 5),

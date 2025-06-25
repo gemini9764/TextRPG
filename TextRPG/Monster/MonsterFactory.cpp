@@ -36,7 +36,11 @@ std::unique_ptr<Monster> MonsterFactory::CreateMonster(int playerLevel)
         default:
             monster = std::make_unique<Slime>(playerLevel, isBoss);
     }
+
+    if (!isBoss)
+    {
+        monster->setLoot();   
+    }
     
-    monster->setLoot();
     return monster;
 }

@@ -39,9 +39,9 @@ void Shop::showItem() const
 
 Item* Shop::getItem(int index) const
 {
-    if (index < 1 || index > items.size())
+    if (index < 0 || index > items.size())
         return nullptr;
-    return items[index - 1].get();
+    return items[index].get();
 }
 
 bool Shop::purchaseItem(int index, int& playerMoney)
@@ -49,13 +49,13 @@ bool Shop::purchaseItem(int index, int& playerMoney)
     if (index < 1 || index > items.size())
         return false;
     std::shared_ptr<Item>& item = items[index - 1];
-
+    
     if (item->getQuantity() <= 0)
     {
         std::cout << "품절되었습니다" << std::endl;
         return false;
     }
-    if (playerMoney < item->getQuantity())
+    if (playerMoney < item->getPrice())
     {
         std::cout << "골드가 모자랍니다" << std::endl;
         return false;
@@ -63,12 +63,12 @@ bool Shop::purchaseItem(int index, int& playerMoney)
 
     char useYn;
     std::cout << "아이템을 구매하시겠습니까?(Y/N)\n>";
-    std::cin.get(useYn);
+    std::cin >> useYn;
     
     while (useYn != 'Y' && useYn != 'y' && useYn != 'N' && useYn != 'n')
     {
         std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
-        std::cin.get(useYn);     
+        std::cin >> useYn;     
     }    
 
     if (useYn == 'Y' || useYn == 'y')
