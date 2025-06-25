@@ -11,8 +11,8 @@ private:
     Inventory inventory;
     
 public:
-    Character(const std::string& name, int level, int hp, int atk, int experience)
-        : name(name), stats(level, hp, atk, experience) {}
+    Character(const std::string& name, int level, int hp, int atk, int experience, int gold)
+        : name(name), stats(level, hp, atk, experience, gold) {}
 
     const std::string& getName() const { return name; }
     CombatStats& getStats() { return stats; }

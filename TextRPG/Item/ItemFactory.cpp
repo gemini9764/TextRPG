@@ -18,7 +18,6 @@ std::vector<std::shared_ptr<Item>> ItemFactory::createItem()
     items.push_back(std::make_shared<Item>("장막", 70, 2, std::make_unique<Damage5Effect>()));
     items.push_back(std::make_shared<Item>("두번 때리기", 80, 2, std::make_unique<DoubleAtkEffect>()));
     items.push_back(std::make_shared<Item>("회피 주사위", 60, 5, std::make_unique<DodgeEffect>()));
-    items.push_back(std::make_shared<Item>("회복 포션", 10, 10, std::make_unique<HealEffect>(50)));
     
     return items;
 }

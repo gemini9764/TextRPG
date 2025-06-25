@@ -15,8 +15,6 @@
 std::unique_ptr<Item> MonsterItemFactory::createMonsterItem()
 {
     int roll = Util::getRandomInRange(1, 7);
-
-    std::cout << "MonsterItemFactory's roll : " << roll << std::endl;
     
     if (roll == 1)
         return std::make_unique<Item>("회복 포션", 10, 1, std::make_unique<HealEffect>(50));
