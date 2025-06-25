@@ -18,12 +18,12 @@ void CombatStats::takeDamage(int amount)
     }
     else if (dodge == true)
     {
-        std::cout << "íšŒí”¼ ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤. 3ì´ ë‚˜ì˜¤ë©´ ê³µê²©ì„ íšŒí”¼í•©ë‹ˆë‹¤." << std::endl;
+        std::cout << "È¸ÇÇ ÁÖ»çÀ§¸¦ ±¼¸³´Ï´Ù. 3ÀÌ ³ª¿À¸é °ø°ÝÀ» È¸ÇÇÇÕ´Ï´Ù." << std::endl;
         int missDice = Util::getRandomInRange(1, 6);
 
         if (missDice == 3)
         {
-            std::cout << "ì£¼ì‚¬ìœ„ ëˆˆì´ 3ì´ ë‚˜ì™”ìŠµë‹ˆë‹¤! ê³µê²©ì„ íšŒí”¼í•©ë‹ˆë‹¤!" << std::endl;
+            std::cout << "ÁÖ»çÀ§ ´«ÀÌ 3ÀÌ ³ª¿Ô½À´Ï´Ù! °ø°ÝÀ» È¸ÇÇÇÕ´Ï´Ù!" << std::endl;
             return;
         }
     }
@@ -31,7 +31,7 @@ void CombatStats::takeDamage(int amount)
     hp -= amount;
     hp = std::max(hp, 0);
     
-    std::cout << amount << "ì˜ ë°ë¯¸ì§€ë¥¼ ë°›ì•˜ìŠµë‹ˆë‹¤(í˜„ìž¬ ì²´ë ¥ : " << hp << " / " << maxhp << ")" << std::endl;
+    std::cout << amount << "ÀÇ µ¥¹ÌÁö¸¦ ¹Þ¾Ò½À´Ï´Ù(ÇöÀç Ã¼·Â : " << hp << " / " << maxhp << ")" << std::endl;
 }
 
 void CombatStats::heal(int amount)
@@ -39,19 +39,19 @@ void CombatStats::heal(int amount)
     hp += amount;
     hp = std::min(hp, maxhp);
     
-    std::cout << "ì²´ë ¥ì„ íšŒë³µí–ˆìŠµë‹ˆë‹¤(í˜„ìž¬ ì²´ë ¥ : " << hp << " / " << maxhp << ")" << std::endl;
+    std::cout << "Ã¼·ÂÀ» È¸º¹Çß½À´Ï´Ù(ÇöÀç Ã¼·Â : " << hp << " / " << maxhp << ")" << std::endl;
 }
 
 void CombatStats::atkBoost(int amount)
 {
     attack += amount;
-    std::cout << "ê³µê²©ë ¥ì´ " << amount << "ë§Œí¼ ìƒìŠ¹í–ˆìŠµë‹ˆë‹¤." << std::endl;
+    std::cout << "°ø°Ý·ÂÀÌ " << amount << "¸¸Å­ »ó½ÂÇß½À´Ï´Ù." << std::endl;
 }
 
 void CombatStats::hpBoost(int amount)
 {
     maxhp += amount;
-    std::cout << "ìµœëŒ€ ì²´ë ¥ì´ " << amount << "ë§Œí¼ ìƒìŠ¹í–ˆìŠµë‹ˆë‹¤." << std::endl;
+    std::cout << "ÃÖ´ë Ã¼·ÂÀÌ " << amount << "¸¸Å­ »ó½ÂÇß½À´Ï´Ù." << std::endl;
 }
 
 bool CombatStats::doubleAttack()
@@ -67,12 +67,12 @@ bool CombatStats::doubleAttack()
 
 void CombatStats::showStats() const
 {
-    std::cout << "---------- ìƒíƒœì°½ -----------" << std::endl;
-    std::cout << "ë ˆë²¨      : " << level << std::endl;
-    std::cout << "ê³µê²©ë ¥    : " << attack << std::endl;
-    std::cout << "ì²´ë ¥      : " << hp << std::endl;
-    std::cout << "ìµœëŒ€ ì²´ë ¥ : " << maxhp << std::endl;
-    std::cout << "ê²½í—˜ì¹˜    : " << experience << std::endl;
+    std::cout << "---------- »óÅÂÃ¢ -----------" << std::endl;
+    std::cout << "·¹º§      : " << level << std::endl;
+    std::cout << "°ø°Ý·Â    : " << attack << std::endl;
+    std::cout << "Ã¼·Â      : " << hp << std::endl;
+    std::cout << "ÃÖ´ë Ã¼·Â : " << maxhp << std::endl;
+    std::cout << "°æÇèÄ¡    : " << experience << std::endl;
     std::cout << "----------------------------" << std::endl;
 }
 
@@ -92,10 +92,10 @@ void CombatStats::levelUp()
         attack += level * 5;
         hp = maxhp;
 
-        std::cout << "ë ˆë²¨ì—…!!" << std::endl;
+        std::cout << "·¹º§¾÷!!" << std::endl;
     }
-    std::cout << "ìµœëŒ€ ì²´ë ¥ê³¼ ê³µê²©ë ¥ì´ ìƒìŠ¹í–ˆìŠµë‹ˆë‹¤!" << level << std::endl;
-    std::cout << "ì²´ë ¥ì´ ëª¨ë‘ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤!" << std::endl;
+    std::cout << "ÃÖ´ë Ã¼·Â°ú °ø°Ý·ÂÀÌ »ó½ÂÇß½À´Ï´Ù!" << level << std::endl;
+    std::cout << "Ã¼·ÂÀÌ ¸ðµÎ È¸º¹µÇ¾ú½À´Ï´Ù!" << std::endl;
     Logger::getInstance().log("Level Up");
     
     showStats();
