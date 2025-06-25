@@ -1,8 +1,7 @@
 ﻿#pragma once
-#include "../Item/Item.h"
 #include <vector>
 #include <memory>
-#include <iostream>
+#include "../Item/Item.h"
 
 class Inventory
 {
@@ -14,4 +13,6 @@ public:
     void showItems() const;
     Item* getItem(int index) const;
     void removeItem(int index);
+    bool empty() const { return inven.empty(); }
+    size_t size() const { return inven.size(); }
 };

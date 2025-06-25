@@ -1,7 +1,7 @@
 ﻿#include "Shop.h"
+#include <iostream>
 #include "../Item/ItemFactory.h"
 #include "../Item/Item.h"
-#include <iostream>
 
 void Shop::initialize()
 {

@@ -1,6 +1,8 @@
 ﻿#include "GameSession.h"
 #include <iostream>
-#include <limits>
+#include <string>
+#include "BattleManager.h"
+#include "Logger.h"
 
 GameSession::GameSession()
 {
@@ -101,6 +103,8 @@ void GameSession::visitShop()
 
 void GameSession::run()
 {
+    BattleManager battleManager;
+    
     while (true)
     {
         std::cout << "1. 상점" << std::endl;
@@ -122,17 +126,26 @@ void GameSession::run()
             player->getStats().showStats();
             break;
         case 3:
-            // 3. 전투
-            player->getStats().takeDamage(20);
-            if (player->getStats().isDead())
             {
-                gameOver();
+                BattleManager::BattleResult result = battleManager.startBattle(*player);
+                if (result.playerWon)
+                {
+                    gold += result.expGained;
+                    player->getStats().gainExp(result.expGained);
+                    if (result.itemLooted != nullptr)
+                    {
+                        player->getInventory().addItem(result.itemLooted->clone());
+                    }
+
+                    if (player->getStats().getLevel() >= 10)
+                    {
+                        std::cout << "축하합니다! 게임을 클리어하셨습니다!" << std::endl;
+                        Logger::getInstance().log("Game Exit");
+                        exit(0);
+                    }
+                }
+                break;
             }
-            else
-            {
-                std::cout << "You survived the combat.\n";
-            }
-            break;
         case 4:
             // 4. 게임 종료
             std::cout << "게임을 종료합니다." << std::endl;

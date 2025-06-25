@@ -173,7 +173,9 @@
     <ClCompile Include="Monster\MonsterItemFactory.cpp" />
     <ClCompile Include="System\BattleManager.cpp" />
     <ClCompile Include="System\GameManager.cpp" />
+    <ClCompile Include="System\Logger.cpp" />
     <ClCompile Include="System\UIManager.cpp" />
+    <ClCompile Include="System\Util.cpp" />
     <ClCompile Include="TextRPG.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -195,7 +197,9 @@
     <ClInclude Include="Monster\Troll.h" />
     <ClInclude Include="System\BattleManager.h" />
     <ClInclude Include="System\GameManager.h" />
+    <ClInclude Include="System\Logger.h" />
     <ClInclude Include="System\UIManager.h" />
+    <ClInclude Include="System\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

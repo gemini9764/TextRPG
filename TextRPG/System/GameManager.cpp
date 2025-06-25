@@ -1,10 +1,9 @@
 ﻿#include "GameManager.h"
 #include "GameSession.h"
-#include <iostream>
 
 void GameManager::run()
 {
-    ui.init();
+    ui.initialize();
     int menuCode = ui.menuDraw();
 
     while (true)

@@ -17,6 +17,14 @@ public:
     Item(const std::string& name, int price, int quantity, std::unique_ptr<Effect> eff)
         : name(name), price(price), quantity(quantity), effect(std::move(eff)) {}
 
+    /**
+     * @brief 지정된 Character 객체를 대상으로 현재 Item을 사용합니다.
+     *
+     * 이 메서드는 대상(Character)에게 아이템 효과를 적용하고, 적용 후 아이템의 수량을 감소시킵니다.
+     * 사용 여부를 묻는 입력이 포함되어 있으며, 남은 수량이 없으면 사용이 불가능합니다.
+     *
+     * @param target 효과를 적용할 Character 객체 (대상).
+     */
     void use(Character& target);
 
     const std::string& getName() const { return name; }
