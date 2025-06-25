@@ -21,9 +21,17 @@ void Inventory::addItem(std::unique_ptr<Item> newItem)
 void Inventory::showItems() const
 {
     std::cout << "--------- 인벤토리 ----------" << std::endl;
-    for (int i = 0; i < inven.size(); i++)
+
+    if (!inven.empty())
     {
-        std::cout << i + 1 << ". " << inven[i]->getName() << " (수량: " << inven[i]->getQuantity() << std::endl;
+        for (int i = 0; i < inven.size(); i++)
+        {
+            std::cout << i + 1 << ". " << inven[i]->getName() << " (수량: " << inven[i]->getQuantity() << std::endl;
+        }
+    }
+    else
+    {
+        std::cout<<"현재 인벤토리가 비어있습니다.\n";
     }
 }
 
