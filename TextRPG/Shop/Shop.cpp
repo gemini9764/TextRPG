@@ -6,7 +6,7 @@
 void Shop::initialize()
 {
     items.clear();
-    items.push_back(ItemFactory::createItem("potion"));
+    items = std::move(ItemFactory::createItem());
 }
 
 void Shop::addItem(std::unique_ptr<Item> newItem)

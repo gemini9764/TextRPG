@@ -1,4 +1,7 @@
 ﻿#include "../Character/CombatStats.h"
+#include "../System/Logger.h"
+#include "../System/Util.h"
+#include "../System/Logger.h"
 #include <algorithm>
 #include <iostream>
 
@@ -7,6 +10,23 @@ CombatStats::CombatStats(int level, int hp, int atk, int experience) : level(lev
 
 void CombatStats::takeDamage(int amount)
 {
+    if (membraneTurn == true)
+    {
+        amount = 5;
+        membraneTurn = false;
+    }
+    else if (dodge == true)
+    {
+        std::cout << "회피 주사위를 굴립니다. 3이 나오면 공격을 회피합니다." << std::endl;
+        int missDice = Util::getRandomInRange(1, 6);
+
+        if (missDice == 3)
+        {
+            std::cout << "주사위 눈이 3이 나왔습니다! 공격을 회피합니다!" << std::endl;
+            return;
+        }
+    }
+    
     hp -= amount;
     hp = std::max(hp, 0);
     
@@ -19,6 +39,29 @@ void CombatStats::heal(int amount)
     hp = std::min(hp, maxhp);
     
     std::cout << "체력을 회복했습니다(현재 체력 : " << hp << " / " << maxhp << ")" << std::endl;
+}
+
+void CombatStats::atkBoost(int amount)
+{
+    attack += amount;
+    std::cout << "공격력이 " << amount << "만큼 상승했습니다." << std::endl;
+}
+
+void CombatStats::hpBoost(int amount)
+{
+    maxhp += amount;
+    std::cout << "최대 체력이 " << amount << "만큼 상승했습니다." << std::endl;
+}
+
+bool CombatStats::doubleAttack()
+{
+    if (doubleTrun == true)
+    {
+        doubleTrun = false;
+        return true;
+    }
+    
+    return false;
 }
 
 void CombatStats::showStats() const

@@ -1,4 +1,4 @@
-﻿#include "Effect.h"
+﻿#include "HealEffect.h"
 #include "../Character/Character.h"
 #include <iostream>
 

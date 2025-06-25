@@ -14,7 +14,7 @@ void GameSession::initializeGame()
     std::cin >> name;
     player = std::make_unique<Character>(name, 1, 200, 30, 0);
     shop.restock();
-    gold = 100;
+    gold = 10;
 
     std::cout << "환영합니다 " << player->getName() << "님!" << std::endl;
 }
@@ -81,7 +81,7 @@ void GameSession::visitShop()
             Item* item = player->getInventory().getItem(sellChoice - 1);
             if (item != nullptr)
             {
-                int sellPrice = item->getPrice() * 0.6;
+                int sellPrice = static_cast<int>(item->getPrice() * 0.6);
                 gold += sellPrice;
                 shop.addItem(item->clone());
 

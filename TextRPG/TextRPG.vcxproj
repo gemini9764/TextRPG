@@ -162,6 +162,16 @@
     <ClCompile Include="./Item/Item.cpp" />
     <ClCompile Include="./Item/ItemFactory.cpp" />
     <ClCompile Include="./Shop/Shop.cpp" />
+    <ClCompile Include="Item\AtkBoostEffect.cpp" />
+    <ClCompile Include="Item\CurseEffect.cpp" />
+    <ClCompile Include="Item\Damage5Effect.cpp" />
+    <ClCompile Include="Item\DodgeEffect.cpp" />
+    <ClCompile Include="Item\DoubleAtkEffect.cpp" />
+    <ClCompile Include="Item\HealEffect.cpp" />
+    <ClCompile Include="Item\HpBoostEffect.cpp" />
+    <ClCompile Include="Monster\MonsterFactory.cpp" />
+    <ClCompile Include="Monster\MonsterItemFactory.cpp" />
+    <ClCompile Include="System\BattleManager.cpp" />
     <ClCompile Include="System\GameManager.cpp" />
     <ClCompile Include="System\UIManager.cpp" />
     <ClCompile Include="TextRPG.cpp" />
@@ -176,6 +186,14 @@
     <ClInclude Include="./Item/ItemFactory.h" />
     <ClInclude Include="./Monster/Monster.h" />
     <ClInclude Include="./Shop/Shop.h" />
+    <ClInclude Include="Monster\Dragon.h" />
+    <ClInclude Include="Monster\Goblin.h" />
+    <ClInclude Include="Monster\MonsterFactory.h" />
+    <ClInclude Include="Monster\MonsterItemFactory.h" />
+    <ClInclude Include="Monster\Orc.h" />
+    <ClInclude Include="Monster\Slime.h" />
+    <ClInclude Include="Monster\Troll.h" />
+    <ClInclude Include="System\BattleManager.h" />
     <ClInclude Include="System\GameManager.h" />
     <ClInclude Include="System\UIManager.h" />
   </ItemGroup>
