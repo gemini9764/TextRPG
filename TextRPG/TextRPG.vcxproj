@@ -162,13 +162,16 @@
     <ClCompile Include="./Item/Item.cpp" />
     <ClCompile Include="./Item/ItemFactory.cpp" />
     <ClCompile Include="./Shop/Shop.cpp" />
+    <ClCompile Include="Character\Character.cpp" />
     <ClCompile Include="Item\AtkBoostEffect.cpp" />
     <ClCompile Include="Item\CurseEffect.cpp" />
+    <ClCompile Include="Item\Effect.cpp" />
     <ClCompile Include="Item\Damage5Effect.cpp" />
     <ClCompile Include="Item\DodgeEffect.cpp" />
     <ClCompile Include="Item\DoubleAtkEffect.cpp" />
     <ClCompile Include="Item\HealEffect.cpp" />
     <ClCompile Include="Item\HpBoostEffect.cpp" />
+    <ClCompile Include="Monster\Monster.cpp" />
     <ClCompile Include="Monster\MonsterFactory.cpp" />
     <ClCompile Include="Monster\MonsterItemFactory.cpp" />
     <ClCompile Include="System\BattleManager.cpp" />
