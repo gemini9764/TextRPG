@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../Item/Item.h"
 #include <memory>
+#include "../Item/Item.h"
 
 class MonsterItemFactory
 {

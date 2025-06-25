@@ -1,6 +1,5 @@
 ﻿#include "Effect.h"
 #include "../Character/Character.h"
-#include <iostream>
 
 void HealEffect::apply(Character& target) {
     target.getStats().heal(amount);

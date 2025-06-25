@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
-#include "../Character/CombatStats.h"
-#include "../Character/Inventory.h"
+#include "CombatStats.h"
+#include "Inventory.h"
 
 class Character
 {

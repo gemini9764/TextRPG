@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../Character/Character.h"
-#include "../Monster/Monster.h"
 #include "../Item/ItemFactory.h"
+
+class Character;
 
 class BattleManager
 {

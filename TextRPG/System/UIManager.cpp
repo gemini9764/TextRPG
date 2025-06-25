@@ -7,7 +7,7 @@
 #define DOWN 1
 #define SUBMIT 2
 
-void UIManager::init()
+void UIManager::initialize()
 {
     system("mode con cols=200 lines 50 | title Team Four G4ME");
     title();

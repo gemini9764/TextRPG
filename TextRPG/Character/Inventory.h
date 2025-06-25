@@ -1,8 +1,7 @@
 ﻿#pragma once
-#include "../Item/Item.h"
 #include <vector>
 #include <memory>
-#include <iostream>
+#include "../Item/Item.h"
 
 class Inventory
 {

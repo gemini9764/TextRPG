@@ -1,7 +1,7 @@
-﻿#include "../Character/CombatStats.h"
-#include "../System/Logger.h"
+﻿#include "CombatStats.h"
 #include <algorithm>
 #include <iostream>
+#include "../System/Logger.h"
 
 CombatStats::CombatStats(int level, int hp, int atk, int experience) : level(level), hp(hp), maxhp(hp), attack(atk), experience(experience)
 {}

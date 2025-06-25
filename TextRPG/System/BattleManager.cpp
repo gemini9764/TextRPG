@@ -1,9 +1,9 @@
 ﻿#include "BattleManager.h"
+#include <iostream>
 #include "../System/Util.h"
 #include "../System/Logger.h"
-#include <iostream>
-#include <limits>
-
+#include "../Character/Character.h"
+#include "../Monster/Monster.h"
 #include "../Monster/MonsterFactory.h"
 
 BattleManager::BattleResult BattleManager::startBattle(Character& player)

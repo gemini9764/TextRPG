@@ -1,8 +1,7 @@
 ﻿#pragma once
-#include "Item.h"
-#include "../System/Util.h"
 #include <memory>
 #include <string>
+#include "Item.h"
 
 class ItemFactory
 {
