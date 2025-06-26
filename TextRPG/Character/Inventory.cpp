@@ -44,7 +44,7 @@ Item* Inventory::getItem(int index) const
 
 void Inventory::removeItem(int index)
 {
-    if (index < 1 || index > inven.size())
+    if (index < 0 || index > inven.size())
         return;
-    inven.erase(inven.begin() + (index - 1));
+    inven.erase(inven.begin() + index);
 }

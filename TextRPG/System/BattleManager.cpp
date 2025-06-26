@@ -14,10 +14,8 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 
 	while (!player.getStats().isDead() && !monster->isDead())
 	{
-		std::cout << player.getName() << "의 HP : " << player.getStats().getHp() << '\n'
-			<< "Attack: " << player.getStats().getAttack() << '\n';
-		std::cout << monster->getName() << "의 HP : " << monster->getHp() << '\n'
-			<< "Attack: " << monster->getAttack() << '\n';
+		std::cout << player.getName() << "의 HP : " << player.getStats().getHp() << " / " << "Attack: " << player.getStats().getAttack() << '\n';
+		std::cout << monster->getName() << "의 HP : " << monster->getHp() << " / " << "Attack: " << monster->getAttack() << '\n';
 
 		std::cout << "1. 공격\n2. 아이템 사용\n>";
 		int choice;

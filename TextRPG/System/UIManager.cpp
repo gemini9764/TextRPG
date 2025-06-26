@@ -45,7 +45,8 @@ void UIManager::infoDraw()
 
     while (1)
     {
-        if (keyControl() == SUBMIT)
+        int key = keyControl();
+        if (key == SUBMIT)
         {
             break;
         }
@@ -103,7 +104,6 @@ int UIManager::menuDraw()
 int UIManager::keyControl()
 {
     char temp = _getch();
-
     if (temp == 'w' || temp == 'W')
         return UP;
 

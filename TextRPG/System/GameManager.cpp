@@ -3,11 +3,10 @@
 
 void GameManager::run()
 {
-    ui.initialize();
-    int menuCode = ui.menuDraw();
-
     while (true)
     {
+        ui.initialize();
+        int menuCode = ui.menuDraw();
         switch (menuCode)
         {
         case 0:

@@ -49,9 +49,9 @@ Item* Shop::getItem(int index) const
 bool Shop::purchaseItem(int index, CombatStats& playerStats)
 {
     int playerMoney = playerStats.getGold();
-    if (index < 1 || index > items.size())
+    if (index < 0 || index > items.size())
         return false;
-    std::shared_ptr<Item>& item = items[index - 1];
+    std::shared_ptr<Item>& item = items[index];
     
     if (item->getQuantity() <= 0)
     {
@@ -82,7 +82,7 @@ bool Shop::purchaseItem(int index, CombatStats& playerStats)
         std::cout << item->getName() << "을(를) 구매하였습니다. 잔액: " << playerMoney << '\n';
 
         if (item->isSoldOut())
-            items.erase(items.begin() + (index - 1));
+            items.erase(items.begin() + index);
 
         return true;
     }

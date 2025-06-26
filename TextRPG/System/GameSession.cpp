@@ -56,7 +56,7 @@ void GameSession::visitShop()
             if (buyChoice == 0)
                 continue;
 
-            if (shop.purchaseItem(buyChoice, player->getStats()))
+            if (shop.purchaseItem(buyChoice - 1, player->getStats()))
             {
                 Item* item = shop.getItem(buyChoice - 1);
                 
