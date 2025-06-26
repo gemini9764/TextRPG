@@ -70,7 +70,9 @@ bool Shop::purchaseItem(int index, CombatStats& playerStats)
 
     while (useYn != 'Y' && useYn != 'y' && useYn != 'N' && useYn != 'n')
     {
-        std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
+        std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
+		std::cin.clear();
+		std::cin.ignore();
         std::cin >> useYn;
     }
 

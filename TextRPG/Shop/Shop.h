@@ -23,7 +23,7 @@ public:
     void addItem(std::unique_ptr<Item> newItem);
     void showItem() const;
     Item* getItem(int index) const;
-
+    int getItemSize() const { return items.size(); }
 
     /**
      * @brief 상점에서 특정 아이템을 구매합니다.

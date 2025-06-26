@@ -14,9 +14,9 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 
 	while (!player.getStats().isDead() && !monster->isDead())
 	{
-		std::cout << player.getName() << "의 HP : " << player.getStats().getHp() << '\n'
+		std::cout << player.getName() << "의 HP : " << player.getStats().getHp() << ", "
 			<< "Attack: " << player.getStats().getAttack() << '\n';
-		std::cout << monster->getName() << "의 HP : " << monster->getHp() << '\n'
+		std::cout << monster->getName() << "의 HP : " << monster->getHp() << ", "
 			<< "Attack: " << monster->getAttack() << '\n';
 
 		std::cout << "1. 공격\n2. 아이템 사용\n>";
@@ -31,9 +31,11 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 			break;
 		}
 
-		while (choice != 1 && choice != 2)
+		while (std::cin.fail() || (choice != 1 && choice != 2))
 		{
-			std::cout << "잘못된 입력입니다. 다시 입력하세요\n>";
+			std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
+			std::cin.clear();
+			std::cin.ignore();
 			std::cin >> choice;
 		}
 
@@ -57,9 +59,20 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 			}
 
 			player.getInventory().showItems();
-			std::cout << "아이템을 선택해주세요\n>";
+			std::cout << "아이템을 선택해주세요(0. 인벤토리 나가기)\n>";
 			int itemIndex;
 			std::cin >> itemIndex;
+
+			while (std::cin.fail() || (itemIndex < 0 || itemIndex > player.getInventory().size()))
+			{
+				std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
+				std::cin.clear();
+				std::cin.ignore();
+				std::cin >> itemIndex;
+			}
+
+			if (itemIndex == 0)
+				continue;
 
 			if (itemIndex >= 1 && itemIndex <= player.getInventory().size())
 			{
@@ -71,10 +84,6 @@ BattleManager::BattleResult BattleManager::startBattle(Character& player)
 				{
 					player.getInventory().removeItem(itemIndex - 1);
 				}
-			}
-			else
-			{
-				std::cout << "잘못된 아이템 사용입니다." << '\n';
 			}
 		}
 

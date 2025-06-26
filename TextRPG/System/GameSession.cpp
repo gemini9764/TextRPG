@@ -35,6 +35,7 @@ void GameSession::gameClear()
 void GameSession::visitShop()
 {
     system("cls");
+
     while (true)
     {
         std::cout << "----------- 상점 -------------" << '\n';
@@ -42,6 +43,14 @@ void GameSession::visitShop()
         int action;
         std::cout << "1. 아이템 구매\n2. 아이템 판매\n0. 상점 나가기\n>";
         std::cin >> action;
+
+		while (std::cin.fail() || (action != 1 && action != 2 && action != 0))
+        {
+            std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
+            std::cin.clear();
+            std::cin.ignore();
+            std::cin >> action;
+        }
 
         if (action == 0)
             return;
@@ -53,52 +62,72 @@ void GameSession::visitShop()
             std::cout << "구매할 물건을 선택하세요(0. 상점으로 되돌아가기)\n>";
             std::cin >> buyChoice;
 
-            if (buyChoice == 0)
-                continue;
+			while (std::cin.fail() || (buyChoice < 0 || buyChoice >= shop.getItemSize()))
+            {
+                std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
+                std::cin.clear();
+                std::cin.ignore();
+                std::cin >> buyChoice;
+            }
 
-            if (shop.purchaseItem(buyChoice, player->getStats()))
-            {
-                Item* item = shop.getItem(buyChoice - 1);
-                
-                if (item != nullptr)
-                {
-                    player->getInventory().addItem(item->clone());
-                    std::cout << "구매가 완료되었습니다" << '\n';
-                }
-            }
-            else
-            {
-                std::cout << "아이템 구매를 취소했습니다." << '\n';
-            }
+			if (buyChoice == 0)
+				continue;
+			else
+			{
+				if (shop.purchaseItem(buyChoice, player->getStats()))
+				{
+					Item* item = shop.getItem(buyChoice - 1);
+
+					if (item != nullptr)
+					{
+						player->getInventory().addItem(item->clone());
+						std::cout << "구매가 완료되었습니다" << '\n';
+					}
+				}
+				else
+				{
+					std::cout << "아이템 구매를 취소했습니다." << '\n';
+				}
+			}
         }
         else if (action == 2)
         {
             player->getInventory().showItems();
+
+            if (player->getInventory().empty())
+                continue;
+
             int sellChoice;
             std::cout << "판매할 물건을 선택하세요(0. 상점으로 되돌아가기)\n>";
             std::cin >> sellChoice;
 
-            if (sellChoice == 0)
-                continue;
-
-            Item* item = player->getInventory().getItem(sellChoice - 1);
-            if (item != nullptr)
+			while (std::cin.fail() || (sellChoice < 0 || sellChoice > player->getInventory().size()))
             {
-                int sellPrice = static_cast<int>(item->getPrice() * 0.6);
-                player->getStats().setGold(player->getStats().getGold() + sellPrice);
-                shop.addItem(item->clone());
-
-                std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << '\n';
-
-                item->decreaseQuantity();
-                if (item->getQuantity() <= 0)
-                {
-                    player->getInventory().removeItem(sellChoice);
-                }
+                std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
+                std::cin.clear();
+                std::cin.ignore();
+                std::cin >> sellChoice;
             }
-        }
-        else
-            std::cout << "다시 선택해주세요" << '\n';
+
+			if (sellChoice == 0)
+				continue;
+
+			Item* item = player->getInventory().getItem(sellChoice - 1);
+			if (item != nullptr)
+			{
+				int sellPrice = static_cast<int>(item->getPrice() * 0.6);
+				player->getStats().setGold(player->getStats().getGold() + sellPrice);
+				shop.addItem(item->clone());
+
+				std::cout << item->getName() << "을(를) " << sellPrice << "골드에 팔았습니다" << '\n';
+
+				item->decreaseQuantity();
+				if (item->getQuantity() <= 0)
+				{
+					player->getInventory().removeItem(sellChoice);
+				}
+			}
+		}
     }
 }
 
@@ -155,8 +184,9 @@ void GameSession::run()
             std::cout << "게임을 종료합니다." << '\n';
             exit(0);
         default:
-            std::cout << "다시 선택해주세요" << '\n';
-            system("cls");
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n";
         }
     }
 }
