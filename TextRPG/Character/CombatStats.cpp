@@ -27,11 +27,17 @@ void CombatStats::takeDamage(int amount)
 	{
 		std::cout << "회피 주사위를 굴립니다. 3이 나오면 공격을 회피합니다." << '\n';
 		int missDice = Util::getRandomInRange(1, 6);
-
+		
+		std::cout << "주사위 눈이 " << missDice << "이(가) 나왔습니다. ";
+		dodge = false;
 		if (missDice == 3)
 		{
-			std::cout << "주사위 눈이 3이 나왔습니다! 공격을 회피합니다!" << '\n';
+			std::cout << "공격을 회피합니다!" << '\n';
 			return;
+		}
+		else
+		{
+			std::cout << "회피에 실패합니다...." << '\n';
 		}
 	}
 

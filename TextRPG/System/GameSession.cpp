@@ -62,7 +62,7 @@ void GameSession::visitShop()
             std::cout << "구매할 물건을 선택하세요(0. 상점으로 되돌아가기)\n>";
             std::cin >> buyChoice;
 
-			while (std::cin.fail() || (buyChoice < 0 || buyChoice >= shop.getItemSize()))
+			while (std::cin.fail() || (buyChoice < 0 || buyChoice > shop.getItemSize()))
             {
                 std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n>";
                 std::cin.clear();
@@ -74,7 +74,7 @@ void GameSession::visitShop()
 				continue;
 			else
 			{
-				if (shop.purchaseItem(buyChoice, player->getStats()))
+				if (shop.purchaseItem(buyChoice - 1, player->getStats()))
 				{
 					Item* item = shop.getItem(buyChoice - 1);
 
