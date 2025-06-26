@@ -12,8 +12,28 @@ GameSession::GameSession()
 void GameSession::initializeGame()
 {
     std::string name;
-    std::cout << "    용사님의 이름을 입력해주세요 : ";
-    std::cin >> name;
+    
+    while (true)
+    {
+		std::cout << "용사님의 이름을 입력해주세요 : " << std::flush;
+        std::getline(std::cin, name);
+
+        if (name.empty())
+        {
+            std::cout << "이름이 비어 있습니다. 다시 입력해주세요.\n>";
+            
+            continue;
+        }
+
+        if (name.find(' ') != std::string::npos)
+        {
+            std::cout << "이름에 공백이 포함되어 있습니다. 다시 입력해주세요.\n>";
+            continue;
+        }
+
+        break; 
+    }
+    
     player = std::make_unique<Character>(name, 1, 200, 30, 0, 0);
     shop.restock();
 
@@ -23,6 +43,7 @@ void GameSession::initializeGame()
 void GameSession::gameOver()
 {
     std::cout << "게임을 재시작합니다" << '\n';
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 이전 입력의 개행문자를 제거해주는 것
     initializeGame();
 }
 
